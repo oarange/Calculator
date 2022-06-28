@@ -1,3 +1,10 @@
+function input () {
+     
+}
+
+
+
+
 function add (a , b) {
    return a + b 	
    };
