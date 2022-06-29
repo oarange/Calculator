@@ -47,7 +47,7 @@ function clear() {
   past.textContent = ''
   currentNumber = ''
   previousNumber = ''
-  present = null
+  currentOperator = null
 }
 
 function appendPoint() {
@@ -68,21 +68,23 @@ function setOperation(operator) {
   if (currentOperator !== null) evaluate()
   currentNumber = present.textContent
   currentOperator = operator
-  past.textContent = `${currentNumber} ${present}`
+  past.textContent = `${currentNumber} ${currentOperator}`
   screenReset = true
 }
 
 function evaluate() {
-  if (present === null || screenReset) return
-  if (present === '/' && present.textContent === '0') {
+  if (currentOperator === null || screenReset) return
+  if (currentOperator === '/' && present.textContent === '0') {
     alert("You can't divide by 0!")
     return
   }
   previousNumber = present.textContent
   present.textContent = roundResult(
-    operate(present, currentNumber, previousNumber)
+    operate(currentOperator, currentNumber, previousNumber)
   )
-  past.textContent = `${currentNumber} ${present} ${previousNumber} =`
+  console.log(previousNumber)
+  
+  past.textContent = `${currentNumber} ${currentOperator} ${previousNumber} = ${present.textContent}`
   currentOperator = null
 }
 
@@ -95,7 +97,7 @@ function roundResult(number) {
 
 
 
-
+console.log( operate( 'x' , 4 , 5))
 
 
 function add (a , b) {
