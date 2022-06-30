@@ -3,9 +3,6 @@ let previousNumber = ''
 let currentOperator = null
 let screenReset = false
 
-
-
-
 const numbers = document.querySelectorAll('.btn')
 const operators = document.querySelectorAll('.btn-operation')
 const equals = document.querySelector('.btn-equals')
@@ -14,9 +11,6 @@ const deleteBtn = document.querySelector('#delete')
 const past= document.querySelector('.past')
 const present = document.querySelector('.present')
 const decimal = document.querySelector('.btn-decimal')
-
-
-
 
 equals.addEventListener('click', evaluate)
 clearA.addEventListener('click', clear)
@@ -82,7 +76,10 @@ function evaluate() {
   present.textContent = roundResult(
     operate(currentOperator, currentNumber, previousNumber)
   )
-  console.log(previousNumber)
+  console.log('*')
+  console.log (currentOperator)
+  console.log(typeof currentOperator)
+  console.log(operate (currentOperator , 3 , 4))
   
   past.textContent = `${currentNumber} ${currentOperator} ${previousNumber} = ${present.textContent}`
   currentOperator = null
@@ -93,8 +90,8 @@ function roundResult(number) {
 }
 
 
-
-
+console.log(currentOperator , 3 , 4)
+ 
 
 
 console.log( operate( 'x' , 4 , 5))
@@ -122,7 +119,7 @@ function multiply (a , b) {
               return add(a, b)
             case '-':
               return subtract(a, b)
-            case 'x':
+            case '*':
               return multiply(a, b)
             case '/':
               if (b === 0) return null
